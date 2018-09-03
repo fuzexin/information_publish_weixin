@@ -1,0 +1,38 @@
+<!--文字信息  -->
+<view class="weui-cells__title">标题:</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" style="height: 3.3em" maxlength='34' bindinput='topicTyping' />
+      <view class="weui-textarea-counter">{{topic_NO_counter}}/35</view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells__title">详细描述：</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" style="height: 7.3em" maxlength='200' bindinput='detailTyping' />
+      <view class="weui-textarea-counter">{{detail_NO_counter}}/205</view>
+    </view>
+  </view>
+</view>
+<!--已上传图片预览  -->
+<view class="uploaded_images">
+  <view class="image_view" wx:for="{{images}}">
+    <image style="width: 90px; height: 90px; background-color: #eeeeee;" src="{{item}}" bindtap="previewImage" data-id="{{index}}" mode='aspectFit'></image>
+    <icon type='cancel' class="cancel_icon" bindtap="deleteUpload" data-id="{{index}}"></icon>
+  </view>
+  <!--图片上传  -->
+  <view class="picture_operate">
+    <view class="weui-uploader__input-box">
+      <view class="weui-uploader__input" bindtap="doUpload"></view>
+    </view>
+  </view>
+</view>
+
+<!--提交按钮  -->
+<view class="button_view">
+  <button class="weui-btn" type="primary" bindtap='publishTo'>发布</button>
+</view>

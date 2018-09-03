@@ -1,0 +1,16 @@
+.getAuthorization{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+.operator{
+  position: absolute;
+  top:30vh;
+  color:#999;
+  font-size:13px;
+  text-align: center;
+  width: 90vw;
+}
+.remaind-text{
+  margin-bottom: 10px;
+}

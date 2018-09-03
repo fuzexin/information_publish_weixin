@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/authorize/authorize",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/me/me",
+    "pages/publish/publish",
+    "pages/details/details"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "云大的云",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#9B9B9B",
+    "selectedColor": "#7ED321",
+    "backgroundColor": "#F8F8F8",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "issues",
+        "iconPath": "images/issues.png",
+        "selectedIconPath": "images/issues-active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "me",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-active.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+<!--pages/authorize/authorize.wxml-->
+<view class="getAuthorization">
+  <view class='operator'>
+    <view class='remaind-text'>
+      <text>云大的云小程序需要获取您的昵称和头像</text>
+    </view>
+
+    <button open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo' type='primary'>登录</button>
+  </view>
+
+</view>

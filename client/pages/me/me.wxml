@@ -1,0 +1,25 @@
+<!--展示头像和昵称///////////////////////-->
+
+<view class="container">
+  <view class="avatar">
+    <image src="{{ avatar }}" />
+  </view>
+  <view class="name">{{ name }}</view>
+</view>
+<!--   ///////////////////////////////  -->
+
+<!-- 展示发布的内容 ///////////////////// -->
+<view class="my_issues">
+  <view class="header_line">
+    我的发布
+  </view>
+  <view class="piece" data-issue_id="{{item.issue_id}}" wx:for="{{issues}}" bindtap="goto_detail">
+    <view class="topic">
+      {{item.topic}}
+    </view>
+    <view class="time">
+      {{item.publish_time}}
+    </view>
+  </view>
+</view>
+<!-- ////////////////////////////////////////  -->

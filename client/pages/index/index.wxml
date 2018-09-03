@@ -1,0 +1,56 @@
+<!--搜索模块  -->
+
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14" bindtap='searchTopic'></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm='searchTopic' maxlength="10" />
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </view>
+  <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+</view>
+<!--end  -->
+<view class="blank"></view>
+<!--内容  -->
+
+<view class="issues_content">
+  <!--置顶信息  -->
+  <view class="issue_piece" wx:for="{{top_issues}}" bindtap="goto_details" data-issue-id="{{item.issue_id}}">
+    <view class="top_icon">
+      <view>
+        <image  class="top_icon_image" src="{{icon_top}}"></image>
+      </view>
+    </view>
+    <view class="info">
+      <view class="tileLine">{{item.topic}}</view>
+      <view class="time">{{item.publish_time}}</view>
+    </view>
+  </view>
+  <!--普通信息  -->
+  <view class="issue_piece" wx:for="{{normal_issues}}" bindtap="goto_details" data-issue-id="{{item.issue_id}}">
+    <view class="top_icon">
+      <view>
+        <image class="top_icon_image" src=""></image>
+      </view>
+    </view>
+    <view class="info">
+      <view class="tileLine">{{item.topic}}</view>
+      <view class="time">{{item.publish_time}}</view>
+    </view>
+  </view>
+</view>
+
+<!--end  -->
+
+<!--publish_icon -->
+
+<view class="post-btn" bindtap="goto_publish">
+  <image class="icon" src="/../images/publish.png" />
+</view>

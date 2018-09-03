@@ -1,0 +1,113 @@
+<!-- 标题  -->
+<view class="title_time">
+  <view class="title">
+    <text>{{issue.topic}}</text>
+  </view>
+  <view class="time">
+    {{issue.publish_time}}
+  </view>
+  <view class="operaters">
+    <text wx:if="{{isAdmin&&issue.is_top==0}}" class='top' bindtap="set_top">置顶</text>
+    <text class="cancel_top" wx:if="{{isAdmin&&issue.is_top==1}}" bindtap="set_top">取消置顶</text>
+    <text class="delete_issue" bindtap="delete_issue" wx:if="{{isAdmin||issue.belongto==1}}">删除</text>
+  </view>
+</view>
+
+
+<!--发布的详细内容  -->
+<view class='details_element'>
+  <view class="publisher">
+    <view class="image_container">
+      <image src="{{issue.avatar}}"></image>
+    </view>
+    <view class="name">
+      {{issue.name}}
+    </view>
+    <view class="user_operate" wx:if="issue.belong==0">
+      <view class="set_administrator" bindtap='set_administrator' wx:if="{{isSuperAdmin && issue.role==0}}">
+        设为管理员
+      </view>
+      <view class="set_administrator" bindtap='set_administrator' wx:if="{{isSuperAdmin && issue.role ==1}}">
+        取消管理员
+      </view>
+      <view class="ban_for_publish" bindtap='ban_publish' wx:if="{{isAdmin && issue.role==0}}">
+        禁言
+      </view>
+      <view class="ban_for_publish" bindtap='ban_publish' wx:if="{{isAdmin && issue.role==2}}">
+        取消禁言
+      </view>
+    </view>
+  </view>
+  <view class="describe">
+    <view class="describe-text">
+      {{issue.detail_text}}
+    </view>
+    <view class="image_form" wx:for="{{images}}">
+      <image wx:if="{{item}}" src="{{item}}" mode='aspectFit' data-image_index="{{index}}" style="margin-right: 5px;vertical-align: middle;width:200px; height: 200px;margin-left:2px;" bindtap="preview_image">
+      </image>
+    </view>
+    <view class="time">
+      {{issue.publish_time}}
+    </view>
+  </view>
+</view>
+
+<!--已经发表的评论  -->
+
+<view class='details_element' wx:for="{{comment}}">
+  <view class="publisher">
+    <view class="image_container">
+      <image src="{{item.avatar}}"></image>
+    </view>
+    <view class="name">
+      {{item.name}}
+    </view>
+    <view class="user_operate" wx:if="issue.belong==0">
+      <view class="set_administrator" bindtap='set_comment_admin' data-comment_id="{{item.comment_id}}" wx:if="{{isSuperAdmin && item.role==0}}">
+        设为管理员
+      </view>
+      <view class="set_administrator" bindtap='set_comment_admin' data-comment_id="{{item.comment_id}}" wx:if="{{isSuperAdmin && item.role==1}}">
+        取消管理员
+      </view>
+      <view class="ban_for_publish" bindtap='ban_comment_pub' data-comment_id="{{item.comment_id}}" wx:if="{{isAdmin && item.role==0}}">
+        禁言
+      </view>
+      <view class="ban_for_publish" bindtap='ban_comment_pub' data-comment_id="{{item.comment_id}}" wx:if="{{isAdmin && item.role==2}}">
+        取消禁言
+      </view>
+    </view>
+  </view>
+  <view class="describe">
+    <view class="describe-text">
+      {{item.comment_text}}
+    </view>
+    <view class="time">
+      {{item.date}}
+    </view>
+    <view class="delete_comment" bindtap="delete_comment" data-comment_id="{{item.comment_id}}" wx:if="{{isAdmin || item.belong==1}}">
+      删除
+    </view>
+  </view>
+</view>
+
+<view class="placehold">
+</view>
+
+
+<!--发表评论 -->
+<view class="publish_comment">
+  <view>
+    <view class=" text_icon">
+      <view class="text_area">
+        <textarea class='text_input' auto-height='true' value="{{inputVal}}" bindinput="inputTyping" maxlength='81' bindconfirm='publish_comment'>
+        </textarea>
+      </view>
+      <view class="icon-clear " wx:if="{{inputVal.length> 0}}" bindtap="clearInput">
+        <icon type="clear " size="14 "></icon>
+      </view>
+    </view>
+  </view>
+  <view class="button_view ">
+    <button type='primary' size='mini' bindtap='publish_comment'>发布</button>
+  </view>
+</view>
